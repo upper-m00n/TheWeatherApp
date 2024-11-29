@@ -96,6 +96,7 @@ export const forecast = async (cityName) => {
         console.log(result);
         return result;
     } catch (error) {
+        alert('invalid city name')
         console.error(error);
     }
 };
