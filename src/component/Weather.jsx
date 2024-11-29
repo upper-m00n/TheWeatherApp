@@ -6,8 +6,12 @@ function Weather() {
     const [weatherData, setWeatherData] = useState(null);
 
     const handleSubmit = async () => {
-        const data = await forecast(cityName);
-        setWeatherData(data);
+        try {
+            const data = await forecast(cityName);
+            setWeatherData(data);
+        } catch (error) {
+            throw("error" + error)
+        }
     };
 
     const fahrenheitToCelsius = (fahrenheit) => ((fahrenheit - 32) * 5) / 9;
