@@ -99,9 +99,11 @@ function Weather() {
                                         >
                                             <div>
                                                 <h3 className="text-lg font-semibold">{day.date}</h3>
-                                                <p className="text-sm font-semibold">Avg Temp: {day.day.avgtemp_c}°C</p>
-                                                <p className="text-sm font-semibold">Precipitation: {day.day.totalprecip_mm} mm</p>
-                                                <p className="text-sm font-semibold">Humidity: {day.day.avghumidity}%</p>
+                                                <p className="text-sm font-semibold pt-1">Avg Temp: {day.day.avgtemp_c}°C</p>
+                                                <p className='text-sm font-semibold pt-1'>Chance of rain: {day.day.daily_chance_of_rain
+                                                }%</p>
+                                                <p className="text-sm font-semibold pt-1">Precipitation: {day.day.totalprecip_mm} mm</p>
+                                                <p className="text-sm font-semibold pt-1">Humidity: {day.day.avghumidity}%</p>
                                             </div>
                                             <img
                                                 src={day.day.condition.icon}
@@ -133,6 +135,7 @@ export const forecast = async (cityName) => {
     try {
         const response = await fetch(url, options);
         const result = await response.json();
+        console.log(result)
         return result;
     } catch (error) {
         throw new Error('Invalid city name');
